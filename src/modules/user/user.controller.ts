@@ -1,8 +1,9 @@
 import { userService } from "./user.service";
+import { Request, Response } from 'express';
 
 export class UserController {
 
-    getUsers = async (req: any, res: any) => {
+    getUsers = async (req: Request, res: Response) => {
         try {
             const users = await userService.getUsers();
             res.status(200).json(users);

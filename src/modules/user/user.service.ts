@@ -3,10 +3,9 @@ import { mapUserToDTO } from "./user.map";
 import { UserDTO } from "./user.dto";
 
 class UserService {
-  public async getUsers() {
+  public async getUsers(): Promise<UserDTO[]> {
     const users = await userRepository.getAllUsers();
-    console.log("Retrieved users:", users);
-    // return users.map(mapUserToDTO);
+    return users.map(mapUserToDTO);
   }
 }
 

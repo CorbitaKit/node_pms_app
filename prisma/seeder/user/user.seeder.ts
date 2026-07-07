@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
+import { PrismaClient } from '../../generated/prisma/client';
+import { Roles } from '../../generate/prisma/enums';
 
-const main: () => Promise<void> = async (prisma: PrismaClient, Roles: Roles): Promise<void> => {
+const main = async (prisma: PrismaClient, Roles: Roles): Promise<void> => {
     await prisma.user.upsert({
         where: { email: 'kit.corbita@gmail.com' },
         create: {

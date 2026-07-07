@@ -1,15 +1,16 @@
 import { prisma } from "../../utils/prisma";
-import { User } from "../../../generated/prisma/client";
+import { UserWithRole } from "./user.dto";
+
+;
 
 export class UserRepository {
 
-    async getAllUsers(): Promise<User[]> {
+    async getAllUsers(): Promise<UserWithRole[]> {
     const user =  prisma.user.findMany( {
         include: {
             role: true,
         },
     });
-    console.log("Retrieved users from repository:", user);
     return user;
   }
 

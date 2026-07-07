@@ -1,17 +1,13 @@
-import { UserDTO } from "./user.dto";
-import { User } from "../../../generated/prisma/client";
+import { UserDTO, UserWithRole } from "./user.dto";
 
-
-export const mapUserToDTO = (user: User): UserDTO => {
-    console.log(user)
-    return {
-        id: user.id,
-        email: user.email,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-        role: {
-            id: user.role.id,
-            name: user.role.name,
-        },
-    };
-}
+export const mapUserToDTO = (user: UserWithRole): UserDTO => ({
+    id: user.id,
+    email: user.email,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
+    roleID: user.roleID,
+    role: {
+        id: user.role.id,
+        name: user.role.name,
+    },
+});
