@@ -2,8 +2,8 @@ model User {
     id        Int      @id @default(autoincrement())
     email     String   @unique
     password  String
-    createdAt DateTime @default(now())
-    roleID    Int      @default(0)
-    updatedAt DateTime @updatedAt
-    role      Role     @relation(fields: [roleID], references: [id])
+    created_at DateTime @default(now())
+    role_id    Int      @default(0)
+    updated_at DateTime @updatedAt
+    role      Role     @relation(fields: [role_id], references: [id])
 }

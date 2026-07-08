@@ -4,16 +4,16 @@ import { Prisma } from "../../../generated/prisma/client";
 export type UserDTO = {
     id: number;
     email: string;
-    createdAt: Date;
-    updatedAt: Date;
-    roleID: number;
+    created_at: Date;
+    updated_at: Date;
+    role_id: number;
     role: RoleDTO | null;
 };
 
 export type CreateUserDTO = {
     email: string;
     password: string;
-    roleID: number;
+    role_id: number;
 }
 
 export type UserWithRole = Prisma.UserGetPayload<{

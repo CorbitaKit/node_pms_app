@@ -9,7 +9,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, World!");
 });
 
-
-app.use("/api/v1", UserRoutes);
 app.use("/api/v1", AuthRoutes);
+app.use("/api/v1", UserRoutes);
 export default app;

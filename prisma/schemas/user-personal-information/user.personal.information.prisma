@@ -1,0 +1,16 @@
+enum Genders {
+    FEMALE
+    MALE
+    OTHER
+}
+
+model UserPersonalInformation {
+    id Int @id @default(autoincrement())
+    user_id Int @unique
+    first_name String
+    last_name String
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+    phone_number Int
+    gender Genders
+}
