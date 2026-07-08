@@ -2,9 +2,11 @@ import Router from 'express';
 import { userController } from '../../modules/user/user.controller';
 import { validate } from '../../middleware/validate';
 import UserValidation from '../../modules/user/user.validation';
+import { authenticate } from '../../middleware/authentication';
 
 const router = Router();
 
+router.use(authenticate)
 router.get('/users', userController.getUsers);
 
 router.post('/users', validate(UserValidation), userController.createUser);

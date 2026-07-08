@@ -25,7 +25,9 @@ export class AuthService
         }
         const accessToken = jwt.sign(
             {
-                user
+                id: user.id,
+                email: user.email,
+                roleID: user.role.id
             },
             JWT_SECRET!,
             {
