@@ -7,8 +7,14 @@ export type UserDTO = {
     createdAt: Date;
     updatedAt: Date;
     roleID: number;
-    role: RoleDTO;
+    role: RoleDTO | null;
 };
+
+export type CreateUserDTO = {
+    email: string;
+    password: string;
+    roleID: number;
+}
 
 export type UserWithRole = Prisma.UserGetPayload<{
     include: { role: true };

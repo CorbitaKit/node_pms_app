@@ -1,13 +1,13 @@
 import Router from 'express';
 import { userController } from '../../modules/user/user.controller';
+import { validate } from '../../middleware/validate';
+import UserValidation from '../../modules/user/user.validation';
 
 const router = Router();
 
 router.get('/users', userController.getUsers);
 
-router.post('/users', (req, res) => {
-  res.send('Create a new user');
-});
+router.post('/users', validate(UserValidation), userController.createUser);
 
 router.get('/users/:id', (req, res) => {
   const { id } = req.params;

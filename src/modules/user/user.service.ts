@@ -1,12 +1,21 @@
-import { userRepository } from "./user.repositories";
+import { userRepository } from "./user.repository";
 import { mapUserToDTO } from "./user.map";
-import { UserDTO } from "./user.dto";
+import { UserDTO, CreateUserDTO } from "./user.dto";
+import bcrypt from "bcrypt";
 
 class UserService {
-  public async getUsers(): Promise<UserDTO[]> {
+  async getUsers(): Promise<UserDTO[]> {
     const users = await userRepository.getAllUsers();
     return users.map(mapUserToDTO);
   }
+
+  async createUser(data: CreateUserDTO): Promise<UserDTO> {
+    data.password = await bcrypt.hash(data.password, 10)
+    const user = await userRepository.createUser(data)
+    return mapUserToDTO(user);
+  }
+
+
 }
 
 export const userService = new UserService();

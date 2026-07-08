@@ -14,6 +14,19 @@ export class UserController {
             });
         }
     };
+
+    createUser = async (req: Request, res: Response) => {
+        try {
+            const user = await userService.createUser(req.body);
+
+            res.status(201).json(user);
+        } catch (err: any) {
+            res.status(500).json({
+                message: "Internal Server Error",
+                error: err.message,
+            });
+        }
+    };
 }
 
 export const userController = new UserController();
