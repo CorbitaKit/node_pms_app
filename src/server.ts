@@ -1,16 +1,14 @@
-import express, { Response, Request } from "express";
+import express from "express";
 import UserRoutes from "./routes/V1/user.routes";
 import AuthRoutes from './routes/V1/auth.routes';
 import { authenticate } from "./middleware/authentication";
 import UserPersonalInformationRoute from './routes/V1/user.personal.information.routes'
-
+import { apiLimiter } from "./middleware/rate.limiter";
 const app = express();
 
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, World!");
-});
+app.use(apiLimiter);
 
 app.use("/api/v1", AuthRoutes);
 app.use(authenticate);
