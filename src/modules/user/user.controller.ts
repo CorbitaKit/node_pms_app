@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 
 export class UserController {
 
-    getUsers = async (res: Response) => {
+    getUsers = async (req: Request, res: Response) => {
         try {
             const users = await userService.getUsers();
             res.status(200).json(users);

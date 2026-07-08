@@ -1,7 +1,7 @@
-import { UserWithRole } from "../user/user.dto";
+import { UserWithRoleAndPersonalInformation } from "../user/user.dto";
 import { AuthResponseDTO } from "./auth.dto";
 
-export const mapAuthResponseDTO = (user: UserWithRole, token: string): AuthResponseDTO => {
+export const mapAuthResponseDTO = (user: UserWithRoleAndPersonalInformation, token: string): AuthResponseDTO => {
     return {
         user: user,
         token: token,

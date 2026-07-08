@@ -4,12 +4,12 @@ import { UserDTO, CreateUserDTO } from "./user.dto";
 import bcrypt from "bcrypt";
 
 class UserService {
-  async getUsers(): Promise<UserDTO[]> {
+  getUsers = async (): Promise<UserDTO[]> => {
     const users = await userRepository.getAllUsers();
     return users.map(mapUserToDTO);
   }
 
-  async createUser(data: CreateUserDTO): Promise<UserDTO> {
+  createUser = async (data: CreateUserDTO): Promise<UserDTO> => {
     data.password = await bcrypt.hash(data.password, 10)
     const user = await userRepository.createUser(data)
     return mapUserToDTO(user);

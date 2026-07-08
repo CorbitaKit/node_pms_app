@@ -6,4 +6,5 @@ model User {
     role_id    Int      @default(0)
     updated_at DateTime @updatedAt
     role      Role     @relation(fields: [role_id], references: [id])
+    personal_information UserPersonalInformation?
 }

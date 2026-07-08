@@ -7,7 +7,7 @@ import { mapAuthResponseDTO } from "./auth.map";
 
 export class AuthService
 {
-    async login(data: CredentialsDto): Promise<AuthResponseDTO>
+    login = async (data: CredentialsDto): Promise<AuthResponseDTO> =>
     {
         const user = await userRepository.findUser(data);
 

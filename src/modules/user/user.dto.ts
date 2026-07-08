@@ -1,5 +1,6 @@
 import { RoleDTO } from "../role/role.dto";
 import { Prisma } from "../../../generated/prisma/client";
+import { UserPersonalInformationDTO } from "../user-personal-information/user.personal.information.dto";
 
 export type UserDTO = {
     id: number;
@@ -8,6 +9,7 @@ export type UserDTO = {
     updated_at: Date;
     role_id: number;
     role: RoleDTO | null;
+    personal_information: UserPersonalInformationDTO | null
 };
 
 export type CreateUserDTO = {
@@ -16,6 +18,6 @@ export type CreateUserDTO = {
     role_id: number;
 }
 
-export type UserWithRole = Prisma.UserGetPayload<{
-    include: { role: true };
+export type UserWithRoleAndPersonalInformation = Prisma.UserGetPayload<{
+    include: { role: true, personal_information: true };
 }>;
