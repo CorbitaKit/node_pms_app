@@ -7,7 +7,7 @@ export class UserRepository
 {
 
     getAllUsers = async (): Promise<UserWithRoleAndPersonalInformation[]> => {
-        const users =  prisma.user.findMany( {
+        const users =  prisma.user.findMany({
             include: {
                 role: true,
                 personal_information: true
