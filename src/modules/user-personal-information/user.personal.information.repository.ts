@@ -13,7 +13,7 @@ export class UserPersonalInformationRepository
     update = async (data: UserPersonalInformationDTO, id: number): Promise<UserPersonalInformation> => {
         return prisma.userPersonalInformation.update({
             where: {
-                user_id: data.user_id
+                user_id: id
             },
             data:  data 
         })

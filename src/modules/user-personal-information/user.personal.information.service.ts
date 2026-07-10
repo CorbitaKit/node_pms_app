@@ -6,7 +6,13 @@ export class UserPersonalInformationService
 {
     store = async (data: UserPersonalInformationDTO): Promise<UserPersonalInformationDTO> => {
         const userPersonalInformation = await userPersonalInformationRepository.store(data)
-        console.log(userPersonalInformation);
+
+        return mapUserInformationToDTO(userPersonalInformation);
+    }
+
+    update = async (data: UserPersonalInformationDTO, id: number): Promise<UserPersonalInformationDTO> => {
+        const userPersonalInformation = await userPersonalInformationRepository.update(data, id);
+
         return mapUserInformationToDTO(userPersonalInformation);
     }
 }

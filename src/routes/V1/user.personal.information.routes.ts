@@ -8,4 +8,6 @@ const router = Router();
 
 router.post('/user-personal-information', validate(UserInformationValidation), userPersonalInformationController.store)
 
+router.put('/user-personal-information/:id', validate(UserInformationValidation), userPersonalInformationController.update)
+
 export default router;
