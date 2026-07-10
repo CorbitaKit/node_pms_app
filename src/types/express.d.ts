@@ -1,4 +1,4 @@
-import { UserJwtPayload } from "../middleware/authentication";
+import { UserJwtPayload } from "../middlewares/authentication";
 
 declare module "express-serve-static-core" {
     interface Request {

@@ -1,6 +1,5 @@
 import { prisma } from "../../utils/prisma";
-import { UserWithRoleAndPersonalInformation } from "./user.dto";
-import { CreateUserDTO } from "./user.dto";
+import { UserWithRoleAndPersonalInformation, CreateUserDTO } from "./user.dto";
 import { CredentialsDto } from "../auth/auth.dto";
 
 export class UserRepository 
@@ -36,6 +35,18 @@ export class UserRepository
                 personal_information: true
             }
         })
+    }
+
+    getUser = async (id: number): Promise<UserWithRoleAndPersonalInformation | null> => {
+        return prisma.user.findUnique({
+            where: {
+                id: id
+            },
+            include: {
+                role: true,
+                personal_information: true
+            }
+        });
     }
 
 

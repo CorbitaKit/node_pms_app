@@ -6,9 +6,6 @@ export const mapUserToDTO = (user: UserWithRoleAndPersonalInformation): UserDTO 
   created_at: user.created_at,
   updated_at: user.updated_at,
   role_id: user.role_id,
-  role: {
-    id: user.role.id,
-    name: user.role.name,
-  },
+  role: user.role,
   personal_information: user.personal_information,
 });

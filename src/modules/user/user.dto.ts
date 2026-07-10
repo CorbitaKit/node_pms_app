@@ -12,7 +12,7 @@ export type UserDTO = {
     personal_information: UserPersonalInformationDTO | null
 };
 
-export type CreateUserDTO = {
+export type UserPayloadDTO  = {
     email: string;
     password: string;
     role_id: number;
@@ -21,3 +21,6 @@ export type CreateUserDTO = {
 export type UserWithRoleAndPersonalInformation = Prisma.UserGetPayload<{
     include: { role: true, personal_information: true };
 }>;
+
+export type UpdateUserDTO = UserPayloadDTO 
+export type CreateUserDTO = UserPayloadDTO 

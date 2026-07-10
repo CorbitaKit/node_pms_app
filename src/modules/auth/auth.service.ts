@@ -27,7 +27,7 @@ export class AuthService
             {
                 id: user.id,
                 email: user.email,
-                role_id: user.role.id
+                role: user.role
             },
             JWT_SECRET!,
             {

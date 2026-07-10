@@ -1,6 +1,6 @@
 import { userRepository } from "./user.repository";
 import { mapUserToDTO } from "./user.map";
-import { UserDTO, CreateUserDTO } from "./user.dto";
+import { UserDTO, CreateUserDTO, UpdateUserDTO } from "./user.dto";
 import bcrypt from "bcrypt";
 
 class UserService {
@@ -12,6 +12,16 @@ class UserService {
   createUser = async (data: CreateUserDTO): Promise<UserDTO> => {
     data.password = await bcrypt.hash(data.password, 10)
     const user = await userRepository.createUser(data)
+    return mapUserToDTO(user);
+  }
+
+  getUser = async (id: number): Promise<UserDTO> => {
+    const user = await userRepository.getUser(id);
+
+    if (!user) {
+      throw Error("User Not Found");
+    }
+    
     return mapUserToDTO(user);
   }
 
