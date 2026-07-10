@@ -25,6 +25,12 @@ class UserService {
     return mapUserToDTO(user);
   }
 
+  deleteUser = async (id: number) => {
+    const user = await userRepository.deleteUser(id)
+    
+    return user;
+  }
+
 
 }
 

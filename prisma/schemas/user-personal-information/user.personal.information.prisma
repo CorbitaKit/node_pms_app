@@ -11,6 +11,7 @@ model UserPersonalInformation {
     last_name String
     created_at DateTime @default(now())
     updated_at DateTime @updatedAt
+    deleted_at DateTime?
     phone_number String
     gender Genders
     user User @relation(fields: [user_id], references: [id])

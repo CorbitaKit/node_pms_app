@@ -45,7 +45,22 @@ export class UserController {
         } catch (err: any) {
             res.status(500).json({
                 message: HTTP_STATUS.INTERNAL_SERVER_ERROR,
-                error: err.messaghe
+                error: err.message
+            })
+        }
+    }
+    
+    deleteUser = async (req: Request, res: Response) => {
+        try {
+            const user = await userService.deleteUser(Number(req.params.id));
+
+            res.status(204).json({
+                message: HTTP_STATUS.DELETED
+            })
+        } catch (err: any) {
+            res.status(500).json({
+                message: HTTP_STATUS.INTERNAL_SERVER_ERROR,
+                error: err.message
             })
         }
     }

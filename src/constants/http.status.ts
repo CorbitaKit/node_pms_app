@@ -6,4 +6,5 @@ export const HTTP_STATUS = {
     NOT_FOUND: "Not Found",
     UNPROCESSABLE_ENTITY: "Unprocessable Entity",
     INTERNAL_SERVER_ERROR: "Internal Server Error",
+    DELETED: "Deleted"
 } as const;

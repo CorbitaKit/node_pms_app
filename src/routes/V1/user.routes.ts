@@ -25,9 +25,10 @@ router.get(
 );
 
 
-router.delete('/users/:id', (req, res) => {
-  const { id } = req.params;
-  res.send(`Delete user with ID: ${id}`);
-});
+router.delete(
+  '/users/:id',
+  authorization(PERMISSIONS.DELETE_USER),
+  userController.deleteUser
+);
 
 export default router;

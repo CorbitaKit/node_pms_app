@@ -7,6 +7,8 @@ export class UserRepository
 
     getAllUsers = async (): Promise<UserWithRoleAndPersonalInformation[]> => {
         const users =  prisma.user.findMany({
+            where: { deleted_at: null},
+
             include: {
                 role: true,
                 personal_information: true
@@ -38,13 +40,23 @@ export class UserRepository
     }
 
     getUser = async (id: number): Promise<UserWithRoleAndPersonalInformation | null> => {
-        return prisma.user.findUnique({
+        return prisma.user.findFirst({
             where: {
-                id: id
+                id: id,
+                deleted_at: null
             },
             include: {
                 role: true,
                 personal_information: true
+            }
+        });
+    }
+
+    deleteUser = async (id: number) => {
+        return prisma.user.update({
+            where: { id },
+            data: {
+                deleted_at: new Date()
             }
         });
     }

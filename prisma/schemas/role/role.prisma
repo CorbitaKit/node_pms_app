@@ -10,5 +10,6 @@ model Role {
     name      Roles    @unique
     created_at DateTime @default(now())
     updated_at DateTime @updatedAt
+    deleted_at DateTime?
     user       User[]
 }

@@ -1,7 +1,6 @@
 import { defineConfig } from "prisma/config";
 import {  DATABASE_URL } from "./src/config/config";
 
-console.log(DATABASE_URL)
 export default defineConfig({
   schema: "prisma",
   migrations: {
