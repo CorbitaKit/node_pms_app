@@ -23,7 +23,7 @@ export const authorization = (roles: readonly Roles[]) => {
                 message: HTTP_STATUS.FORBIDDEN
             });
         }
-
+        
         next();
     }
 }

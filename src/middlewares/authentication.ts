@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config/config";
+import { HTTP_STATUS } from "../constants/http.status";
 
 export interface UserJwtPayload extends jwt.JwtPayload {
     id: number;
@@ -21,7 +22,7 @@ export const authenticate = (
 
     if (!authHeader?.startsWith("Bearer ")) {
         return res.status(401).json({
-            message: "Unauthorized",
+            message: HTTP_STATUS.UNAUTHORIZED,
         });
     }
 
@@ -35,7 +36,7 @@ export const authenticate = (
         next();
     } catch {
         return res.status(401).json({
-            message: "Invalid or expired token",
+            message: HTTP_STATUS.EXPIRED_TOKEN,
         });
     }
 };

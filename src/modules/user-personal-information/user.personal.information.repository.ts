@@ -4,10 +4,19 @@ import { UserPersonalInformation } from '../../../generated/prisma/client';
 
 export class UserPersonalInformationRepository
 {
-    store = async(data: UserPersonalInformationDTO): Promise<UserPersonalInformation> => {
+    store = async (data: UserPersonalInformationDTO): Promise<UserPersonalInformation> => {
         return prisma.userPersonalInformation.create({
             data
         });
+    }
+
+    update = async (data: UserPersonalInformationDTO, id: number): Promise<UserPersonalInformation> => {
+        return prisma.userPersonalInformation.update({
+            where: {
+                user_id: data.user_id
+            },
+            data:  data 
+        })
     }
 }
 
